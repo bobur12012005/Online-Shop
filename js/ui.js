@@ -1,3 +1,6 @@
+let counter = document.querySelector('.top h1')
+let count = 0
+
 export function reload(arr, place) {
     place.innerHTML = ""
 
@@ -56,13 +59,20 @@ export function reload(arr, place) {
         product_rating.append(product_rating_img, product_rating_txt)
         product_amount.append(product_amount_img, product_amount_txt)
 
+        
+
         product_add_btn.onclick = () => {
             product_add_btn.classList.toggle('product-add_btn-active');
             if (product_add_btn.classList.contains('product-add_btn-active')) {
                 product_add_btn.innerHTML = 'Добавлено'
+                count+=1
+                counter.innerHTML = 'Количество товаров в корзине: ' + count
             } else {
                 product_add_btn.innerHTML = 'В корзину'
+                count-=1
+                counter.innerHTML = 'Количество товаров в корзине: ' + count
             }
         }
     }
 }
+    console.log(count);
