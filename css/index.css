@@ -7,6 +7,7 @@
 
 body {
     overflow-x: hidden;
+    background-color: #151515;
 }
 
 img {
@@ -32,6 +33,7 @@ button {
     h1 {
         font-weight: 700;
         font-size: 48px;
+        color: white;
     }
 
     .buttons {
@@ -42,7 +44,8 @@ button {
         button {
             width: 220px;
             height: 50px;
-            border: 2px solid #000000;
+            border: 2px solid white;
+            color: white;
             border-radius: 10px;
             font-size: 16px;
             font-weight: 600;
@@ -52,8 +55,9 @@ button {
         button:hover {
             transform: scale(1.05);
             transition: 0.2s;
-            background-color: #000000;
-            color: white;
+            background-color: white;
+            color: black;
+            box-shadow: 0px 0px 10px 1px white;
         }
 
         button:active {
@@ -77,13 +81,19 @@ button {
 .product-box {
     width: 320px;
     height: 470px;
-    border: 1px solid #000;
+    border: 2px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
+    border: 2px solid white;
+}
+
+.product-box:hover {
+    box-shadow: 0px 0px 10px 5px white;
+    transition: 0.2s;
 }
 
 .product-img_cont {
@@ -92,15 +102,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .product-img {
     width: 100px;
-}
-
-.product-img:hover {
-    transform: scale(1.13);
-    transition: 0.3s;
 }
 
 .product-char {
@@ -108,7 +114,7 @@ button {
     flex-direction: column;
     padding: 30px;
     gap: 15px;
-    background-color: black;
+    background-color: #151515;
     width: 100%;
     height: 270px;
 }
@@ -181,6 +187,19 @@ button {
     top: 0;
     bottom: 0;
     right: -35%;
-    background-color: #161616;
+    background-color: #252525;
     transition: 0.5s;
+
+    .menu_title {
+        height: 5%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border-bottom: 1px solid white;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: 5px;
+    }
 }

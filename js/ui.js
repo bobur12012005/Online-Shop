@@ -59,8 +59,6 @@ export function reload(arr, place) {
         product_rating.append(product_rating_img, product_rating_txt)
         product_amount.append(product_amount_img, product_amount_txt)
 
-        
-
         product_add_btn.onclick = () => {
             product_add_btn.classList.toggle('product-add_btn-active');
             if (product_add_btn.classList.contains('product-add_btn-active')) {
