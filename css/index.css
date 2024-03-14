@@ -174,3 +174,13 @@ button {
     background-color: #0037ff;
     color: white;
 }
+
+#busket-menu {
+    position: fixed;
+    width: 35%;
+    top: 0;
+    bottom: 0;
+    right: -35%;
+    background-color: #161616;
+    transition: 0.5s;
+}

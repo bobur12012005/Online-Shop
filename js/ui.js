@@ -75,4 +75,3 @@ export function reload(arr, place) {
         }
     }
 }
-    console.log(count);
