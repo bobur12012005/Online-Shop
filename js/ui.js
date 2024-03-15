@@ -1,5 +1,6 @@
 let counter = document.querySelector('.top h1')
 let count = 0
+let items_ms = []
 
 export function reload(arr, place) {
     place.innerHTML = ""
@@ -65,10 +66,14 @@ export function reload(arr, place) {
                 product_add_btn.innerHTML = 'Добавлено'
                 count+=1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
+                items_ms.push(item)
+                console.log(items_ms);
             } else {
                 product_add_btn.innerHTML = 'В корзину'
                 count-=1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
+                items_ms.pop(item)
+                console.log(items_ms);
             }
         }
     }
