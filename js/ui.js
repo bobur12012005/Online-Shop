@@ -1,3 +1,4 @@
+let menu_container = document.querySelector('.menu_container')
 let counter = document.querySelector('.top h1')
 let count = 0
 let items_ms = []
@@ -64,17 +65,60 @@ export function reload(arr, place) {
             product_add_btn.classList.toggle('product-add_btn-active');
             if (product_add_btn.classList.contains('product-add_btn-active')) {
                 product_add_btn.innerHTML = 'Добавлено'
-                count+=1
+                count += 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
                 items_ms.push(item)
+                reloadMenu(items_ms, menu_container)
                 console.log(items_ms);
             } else {
                 product_add_btn.innerHTML = 'В корзину'
-                count-=1
+                count -= 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
                 items_ms.pop(item)
+                reloadMenu(items_ms, menu_container)
                 console.log(items_ms);
             }
         }
+    }
+}
+
+function reloadMenu(arr, place) {
+    place.innerHTML = ''
+
+    for (let item of arr) {
+        let elem = document.createElement('div')
+        let img_div = document.createElement('div')
+        let elem_img = document.createElement('img')
+        let elem_staff = document.createElement('div')
+        let i_cot = document.createElement('span')
+        let i_def = document.createElement('span')
+        let elem_counter = document.createElement('div')
+        let elem_amount = document.createElement('span')
+        let elem_plus = document.createElement('button')
+        let elem_minus = document.createElement('button')
+
+        elem.classList.add('item')
+        img_div.classList.add('img_div')
+        elem_img.classList.add('item_img')
+        elem_staff.classList.add('item_staff')
+        i_cot.classList.add('i_cot')
+        i_def.classList.add('i_def')
+        elem_counter.classList.add('item_counter')
+        elem_amount.classList.add('apm')
+        elem_plus.classList.add('apm')
+        elem_minus.classList.add('apm')
+
+        elem_img.src = item.image
+        i_cot.innerHTML = item.category
+        i_def.innerHTML = item.title
+        elem_amount.innerHTML = '0'
+        elem_plus.innerHTML = '+'
+        elem_minus.innerHTML = '-'
+
+        place.append(elem)
+        elem.append(img_div, elem_staff, elem_counter)
+        img_div.append(elem_img)
+        elem_staff.append(i_cot, i_def)
+        elem_counter.append(elem_plus, elem_amount, elem_minus)
     }
 }

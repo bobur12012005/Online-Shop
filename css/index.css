@@ -199,7 +199,7 @@ button {
 
     .menu_title {
         position: relative;
-        height: 40px;
+        height: 5%;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -229,6 +229,15 @@ button {
             cursor: pointer;
         }
     }
+
+    .menu_container {
+        position: relative;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 70%;
+        scrollbar-width: none;
+        border-bottom: 2px solid #000;
+    }
 }
 
 #busket-menu:hover .menu_title button {
@@ -256,6 +265,7 @@ button {
     align-items: center;
     border-radius: 100%;
     border: 2px solid #000;
+    overflow: hidden;
 }
 
 .item_img {
