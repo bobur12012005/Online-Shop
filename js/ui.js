@@ -135,6 +135,7 @@ function reloadMenu(arr, place) {
 
         elem_del.onclick = () => {
             let deleteItem = items_ms.findIndex((e) => e === item)
+            let btns = document.querySelectorAll('.product-add_btn')
 
             if (deleteItem !== -1) {
                 items_ms.splice(deleteItem, 1)
@@ -142,9 +143,8 @@ function reloadMenu(arr, place) {
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
                 elem.remove()
 
-                let btns = document.querySelectorAll('.product-add_btn')
                 btns.forEach((btn, idx) => {
-                    if (idx === deleteItem) {
+                    if (idx === deleteItem && btn.classList.contains('product-add_btn-active')) {
                         btn.classList.remove('product-add_btn-active')
                         btn.innerHTML = 'В корзину'
                     }
