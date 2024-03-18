@@ -229,7 +229,7 @@ button {
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            color: red;
+            color: black;
         }
     }
 
@@ -302,13 +302,37 @@ button {
     font-weight: 600;
 }
 
+.oth_staff {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
 .item_counter {
     width: 100px;
-    margin-left: 20px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding-left: 20px;
+}
+
+.elem_del {
+    width: 40px;
+    height: 79px;
+    margin-left: -52px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+.elem_del:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+
+.elem_del_icon {
+    width: 25px;
 }
 
 .apm {
@@ -322,4 +346,18 @@ button {
     align-items: center;
     font-size: 17px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.apm:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+.apm:nth-child(2n) {
+    cursor: auto;
+}
+
+.apm:nth-child(2n):hover {
+    transform: scale(1.00);
 }

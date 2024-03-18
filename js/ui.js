@@ -75,7 +75,7 @@ export function reload(arr, place) {
                 count -= 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
                 let deleteItem = items_ms.findIndex((elem) => elem === item)
-              
+
                 if (deleteItem !== -1) {
                     items_ms.splice(deleteItem, 1)
                 }
@@ -95,7 +95,10 @@ function reloadMenu(arr, place) {
         let elem_staff = document.createElement('div')
         let i_cot = document.createElement('span')
         let i_def = document.createElement('span')
+        let oth_staff = document.createElement('div')
         let elem_counter = document.createElement('div')
+        let elem_del = document.createElement('button')
+        let elem_del_icon = document.createElement('img')
         let elem_amount = document.createElement('span')
         let elem_plus = document.createElement('button')
         let elem_minus = document.createElement('button')
@@ -106,12 +109,16 @@ function reloadMenu(arr, place) {
         elem_staff.classList.add('item_staff')
         i_cot.classList.add('i_cot')
         i_def.classList.add('i_def')
+        oth_staff.classList.add('oth_staff')
         elem_counter.classList.add('item_counter')
+        elem_del.classList.add('elem_del')
         elem_amount.classList.add('apm')
         elem_plus.classList.add('apm')
         elem_minus.classList.add('apm')
+        elem_del_icon.classList.add('elem_del_icon')
 
         elem_img.src = item.image
+        elem_del_icon.src = './icons/delete.png'
         i_cot.innerHTML = item.category
         i_def.innerHTML = item.title
         elem_amount.innerHTML = '0'
@@ -119,9 +126,21 @@ function reloadMenu(arr, place) {
         elem_minus.innerHTML = '-'
 
         place.append(elem)
-        elem.append(img_div, elem_staff, elem_counter)
+        elem.append(img_div, elem_staff, oth_staff)
         img_div.append(elem_img)
         elem_staff.append(i_cot, i_def)
+        oth_staff.append(elem_counter, elem_del)
         elem_counter.append(elem_plus, elem_amount, elem_minus)
+        elem_del.append(elem_del_icon)
+
+        elem_del.onclick = () => {
+            let deleteItem = items_ms.findIndex((e) => e === item)
+
+            if (deleteItem !== -1) {
+                items_ms.splice(deleteItem, 1)
+                count -= 1
+                counter.innerHTML = 'Количество товаров в корзине: ' + count
+            }
+        }
     }
 }
