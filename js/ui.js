@@ -62,21 +62,24 @@ export function reload(arr, place) {
         product_amount.append(product_amount_img, product_amount_txt)
 
         product_add_btn.onclick = () => {
-            product_add_btn.classList.toggle('product-add_btn-active');
+            product_add_btn.classList.toggle('product-add_btn-active')
+
             if (product_add_btn.classList.contains('product-add_btn-active')) {
                 product_add_btn.innerHTML = 'Добавлено'
                 count += 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
                 items_ms.push(item)
                 reloadMenu(items_ms, menu_container)
-                console.log(items_ms);
             } else {
                 product_add_btn.innerHTML = 'В корзину'
                 count -= 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
-                items_ms.pop(item)
+                let deleteItem = items_ms.findIndex((elem) => elem === item)
+              
+                if (deleteItem !== -1) {
+                    items_ms.splice(deleteItem, 1)
+                }
                 reloadMenu(items_ms, menu_container)
-                console.log(items_ms);
             }
         }
     }
