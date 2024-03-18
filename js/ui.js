@@ -140,6 +140,15 @@ function reloadMenu(arr, place) {
                 items_ms.splice(deleteItem, 1)
                 count -= 1
                 counter.innerHTML = 'Количество товаров в корзине: ' + count
+                elem.remove()
+
+                let btns = document.querySelectorAll('.product-add_btn')
+                btns.forEach((btn, idx) => {
+                    if (idx === deleteItem) {
+                        btn.classList.remove('product-add_btn-active')
+                        btn.innerHTML = 'В корзину'
+                    }
+                })
             }
         }
     }
