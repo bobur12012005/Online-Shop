@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="top">
         <h1>Количество товаров в корзине: 0</h1>
@@ -25,16 +27,31 @@
         </div>
         <div class="menu_container"></div>
         <div class="menu_functions">
-            <div class="func-top">Купить всё...</div>
-            <div class="func-bottom">
+            <div class="func">
                 <div class="details">
-                    
+                    <div class="dt_txt">
+                        <span>Choosen types:</span>
+                        <br>
+                        <span>Total amount:</span>
+                        <br>
+                        <span>Total price:</span>
+                    </div>
+                    <div class="dt_num">
+                        <span>0</span>
+                        <br>
+                        <span>0</span>
+                        <br>
+                        <span>$0</span>
+                    </div>
                 </div>
-                <button class="buy"></button>
+                <div class="purchase">
+                    <button><img src="./icons/purchase.png" alt="Purchase"></button>
+                </div>
             </div>
         </div>
     </div>
 
     <script type="module" src="./js/index.js"></script>
 </body>
+
 </html>
