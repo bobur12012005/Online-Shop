@@ -227,6 +227,9 @@ button {
             background-size: 25px 25px;
             transition: left 0.2s linear;
             cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            color: red;
         }
     }
 

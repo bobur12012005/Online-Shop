@@ -24,11 +24,11 @@ close_busket.onclick = () => {
 }
 busket_menu.onmouseenter = () => {
     setTimeout(function () {
-        close_busket.style.backgroundImage = 'url(../icons/close.svg)'
+        close_busket.innerHTML = 'CLOSE'
     }, 200)
 }
 busket_menu.onmouseleave = () => {
     setTimeout(function () {
-        close_busket.style.backgroundImage = ''
+        close_busket.innerHTML = ''
     }, 0)
 }
