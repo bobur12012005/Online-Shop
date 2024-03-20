@@ -379,7 +379,6 @@ button {
 
 .item_counter {
     width: 100px;
-    padding-left: 20px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -404,7 +403,7 @@ button {
 }
 
 .apm {
-    width: 25px;
+    width: 40px;
     height: 25px;
     border-radius: 4px;
     background-color: black;

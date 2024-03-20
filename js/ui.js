@@ -1,6 +1,10 @@
+import { goods } from "./db.js";
 let menu_container = document.querySelector('.menu_container')
+let container = document.querySelector('.container')
 let counter = document.querySelector('.top h1')
-let count = 0
+let choosen_amount = document.querySelector('#choosen_amount')
+let total_amount = document.querySelector('#total_amount')
+let total_price = document.querySelector('#total_price')
 let items_ms = []
 
 export function reload(arr, place) {
@@ -61,34 +65,37 @@ export function reload(arr, place) {
         product_rating.append(product_rating_img, product_rating_txt)
         product_amount.append(product_amount_img, product_amount_txt)
 
+        if (items_ms.find(el => el.id === item.id)) {
+            product_add_btn.classList.add('product-add_btn-active')
+            product_add_btn.innerHTML = 'Добавлено'
+        }
+
         product_add_btn.onclick = () => {
-            product_add_btn.classList.toggle('product-add_btn-active')
-
             if (product_add_btn.classList.contains('product-add_btn-active')) {
-                product_add_btn.innerHTML = 'Добавлено'
-                count += 1
-                counter.innerHTML = 'Количество товаров в корзине: ' + count
-                items_ms.push(item)
-                reloadMenu(items_ms, menu_container)
-            } else {
+                let idx = items_ms.indexOf(item)
+                product_add_btn.classList.remove('product-add_btn-active')
                 product_add_btn.innerHTML = 'В корзину'
-                count -= 1
-                counter.innerHTML = 'Количество товаров в корзине: ' + count
-                let deleteItem = items_ms.findIndex((elem) => elem === item)
-
-                if (deleteItem !== -1) {
-                    items_ms.splice(deleteItem, 1)
-                }
-                reloadMenu(items_ms, menu_container)
+                items_ms.splice(idx, 1)
+            } else {
+                product_add_btn.classList.add('product-add_btn-active')
+                product_add_btn.innerHTML = 'Добавлено'
+                items_ms.push(item)
             }
+            reloadMenu(items_ms, menu_container)
+            counter.innerHTML = 'Количество товаров в корзине: ' + items_ms.length
         }
     }
 }
 
 function reloadMenu(arr, place) {
     place.innerHTML = ''
+    choosen_amount.innerHTML = arr.length
+    total_amount.innerHTML = arr.length
+    let total = 0
 
     for (let item of arr) {
+        total_price.innerHTML = `$${total += item.price}`
+
         let elem = document.createElement('div')
         let img_div = document.createElement('div')
         let elem_img = document.createElement('img')
@@ -121,7 +128,7 @@ function reloadMenu(arr, place) {
         elem_del_icon.src = './icons/delete.png'
         i_cot.innerHTML = item.category
         i_def.innerHTML = item.title
-        elem_amount.innerHTML = '0'
+        elem_amount.innerHTML = '1'
         elem_plus.innerHTML = '+'
         elem_minus.innerHTML = '-'
 
@@ -134,21 +141,29 @@ function reloadMenu(arr, place) {
         elem_del.append(elem_del_icon)
 
         elem_del.onclick = () => {
-            let deleteItem = items_ms.findIndex((e) => e === item)
-            let btns = document.querySelectorAll('.product-add_btn')
+            let idx = items_ms.indexOf(item)
+            items_ms.splice(idx, 1)
+            reload(goods, container)
+            elem.remove()
+            counter.innerHTML = 'Количество товаров в корзине: ' + items_ms.length
+            total_price.innerHTML = '$' + (total -= (item.price * +elem_amount.innerHTML)).toFixed(2)
+            total_amount.innerHTML -= +elem_amount.innerHTML
+            choosen_amount.innerHTML = arr.length
+        }
 
-            if (deleteItem !== -1) {
-                items_ms.splice(deleteItem, 1)
-                count -= 1
-                counter.innerHTML = 'Количество товаров в корзине: ' + count
-                elem.remove()
+        elem_plus.onclick = () => {
+            if (+elem_amount.innerHTML < item.rating.count) {
+                +elem_amount.innerHTML++
+                total_price.innerHTML = '$' + (total += item.price).toFixed(2)
+                total_amount.innerHTML++
+            }
+        }
 
-                btns.forEach((btn, idx) => {
-                    if (idx === deleteItem && btn.classList.contains('product-add_btn-active')) {
-                        btn.classList.remove('product-add_btn-active')
-                        btn.innerHTML = 'В корзину'
-                    }
-                })
+        elem_minus.onclick = () => {
+            if (+elem_amount.innerHTML > 0) {
+                +elem_amount.innerHTML--
+                total_price.innerHTML = '$' + (total -= item.price).toFixed(2)
+                total_amount.innerHTML--
             }
         }
     }
